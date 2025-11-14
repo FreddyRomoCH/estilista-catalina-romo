@@ -42,7 +42,9 @@ export async function getAboutMe() {
 
 export async function getStrapiData(url: string) {
     try {
-        const response = await fetch(`${STRAPI_BASE_URL}${url}`)
+        const response = await fetch(`${STRAPI_BASE_URL}${url}`, {
+            cache: 'no-store',
+        })
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`)
