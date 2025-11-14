@@ -1,4 +1,4 @@
-export const STRAPI_BASE_URL = process.env.STRAPI_BASE_URL
+export const STRAPI_BASE_URL = 'http://localhost:1337'
 
 export async function getHeroBanner() {
     const queryHomePage = 'populate[section][on][layout.hero-banner][populate][banner][fields][0]=url&populate[section][on][layout.hero-banner][populate][buttons][populate]'
