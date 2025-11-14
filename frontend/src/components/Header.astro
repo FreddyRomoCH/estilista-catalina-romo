@@ -1,0 +1,102 @@
+---
+import MenuHeader from "@components/MenuHeader.astro";
+import SocialMedia from "@components/SocialMedia.astro";
+
+const menuIcon = "/icons/menu.png";
+---
+
+<header class="px-8 py-4 bg-principal text-dorado sticky top-0 z-50 shadow-md">
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <div class="md:hidden relative">
+      <img class="menu-icon w-8" src={menuIcon} alt="Menú" />
+      <nav
+        class="mobile-menu origin-top top-full hidden absolute bg-principal box-content rounded-sm [&>ul>li]:p-2 [&>ul>li]:border-b [&>ul>li]:border-primary [&>ul>li]:w-full z-10"
+      >
+        <MenuHeader />
+
+        <div class="[&>ul>li]:border-0 [&>ul>li]:p-2">
+          <SocialMedia color="#BFA05A" />
+        </div>
+      </nav>
+    </div>
+
+    <span
+      class="font-cinzel font-black italic text-sm md:text-base h-20 sm:h-14 block"
+    >
+      <a href="/">
+        <img
+          class="h-full w-auto object-cover hover:scale-110 transition-transform duration-200"
+          src="/logo.png"
+          alt="Catalina Romo - Logo"
+        />
+      </a>
+    </span>
+
+    <nav class="menu-header hidden md:block" arial-label="Main Menu">
+      <MenuHeader />
+    </nav>
+
+    <a
+      href="#contacto"
+      class="bg-dorado hover:bg-principal text-principal hover:text-dorado transition-colors duration-150 px-4 py-2 rounded hover:contrast-75 font-cinzel text-sm md:text-base font-medium cursor-pointer"
+      >Reserva aquí</a
+    >
+
+    <nav class="hidden md:block" aria-label="Redes Sociales">
+      <SocialMedia color="#EAD285" />
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menuIcon = document.querySelector(".menu-icon");
+  const mobileMenu = document.querySelector(".mobile-menu");
+
+  // Toggle al hacer clic en el ícono
+  menuIcon?.addEventListener("click", () => {
+    const isHidden = mobileMenu?.classList.contains("hidden");
+
+    mobileMenu?.classList.remove("animate-slide-up", "animate-slide-down");
+
+    if (isHidden) {
+      // Mostrar con animación hacia abajo
+      mobileMenu?.classList.remove("hidden");
+      mobileMenu?.classList.add("animate-slide-down");
+    } else {
+      // Ocultar con animación hacia arriba
+      mobileMenu?.classList.remove("animate-slide-down");
+      mobileMenu?.classList.add("animate-slide-up");
+      setTimeout(() => mobileMenu?.classList.add("hidden"), 300);
+    }
+  });
+
+  function closeMenu() {
+    mobileMenu?.classList.remove("animate-slide-down");
+    mobileMenu?.classList.add("animate-slide-up");
+    setTimeout(() => mobileMenu?.classList.add("hidden"), 300);
+  }
+
+  // Cerrar al hacer clic fuera
+  document.addEventListener("click", (event) => {
+    if (
+      event.target instanceof Node &&
+      !mobileMenu?.contains(event.target) &&
+      !menuIcon?.contains(event.target)
+    ) {
+      if (!mobileMenu?.classList.contains("hidden")) {
+        closeMenu();
+      }
+    }
+  });
+
+  //Cerrar emnu al hacer clic en un enlace
+  const menuLinks = mobileMenu?.querySelectorAll("a");
+
+  menuLinks?.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (!mobileMenu?.classList.contains("hidden")) {
+        closeMenu();
+      }
+    });
+  });
+</script>

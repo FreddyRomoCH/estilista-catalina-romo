@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_component_trabajos",
+  "info": {
+    "displayName": "trabajo",
+    "icon": "brush"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "columns": {
+      "type": "integer",
+      "required": true,
+      "default": 1
+    },
+    "color": {
+      "type": "enumeration",
+      "default": "lighter",
+      "enum": [
+        "lighter",
+        "darker"
+      ]
+    }
+  },
+  "config": {}
+}

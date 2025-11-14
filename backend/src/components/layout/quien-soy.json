@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_layout_quien_soys",
+  "info": {
+    "displayName": "Quien Soy",
+    "icon": "emotionHappy"
+  },
+  "options": {},
+  "attributes": {
+    "yo": {
+      "type": "component",
+      "component": "component.yo",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_component_yos",
+  "info": {
+    "displayName": "yo",
+    "icon": "emotionHappy"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "files",
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}

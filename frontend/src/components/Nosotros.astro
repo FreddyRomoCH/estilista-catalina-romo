@@ -1,0 +1,27 @@
+---
+const { homePageAboutMe, baseUrl } = Astro.props;
+
+const { description, image } = homePageAboutMe.section[0].yo;
+---
+
+<section id="conoceme" class="max-w-7xl m-auto mb-12">
+  <h2 class="title-section">¿Quién soy?</h2>
+
+  <div
+    class="flex mt-5 flex-col md:flex-row justify-between items-center bg-principal-lighter p-5 gap-3"
+  >
+    <div class="order-2 md:order-1">
+      <p class="font-playfair font-medium text-base text-gris-oscuro">
+        {description}
+      </p>
+    </div>
+
+    <picture class="order-1 md:order-2">
+      <img
+        class="aspect-square object-cover rounded-md"
+        src={`${baseUrl}${image[0].url}`}
+        alt="Foto Catalina Romo"
+      />
+    </picture>
+  </div>
+</section>

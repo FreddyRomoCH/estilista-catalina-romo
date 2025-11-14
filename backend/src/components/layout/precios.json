@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_layout_precios",
+  "info": {
+    "displayName": "Precios",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "precio": {
+      "type": "component",
+      "component": "component.precio",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

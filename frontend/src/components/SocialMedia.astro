@@ -1,0 +1,19 @@
+---
+const { color } = Astro.props;
+
+import InstagramIcon from "@components/InstagramIcon.astro";
+import FacebookIcon from "@components/FacebookIcon.astro";
+---
+
+<ul class="flex justify-center items-center gap-2">
+  <li
+    class="hover:bg-principal-darker hover:scale-110 transition-transform duration-200 cursor-pointer p-1 hover:rounded-full"
+  >
+    <InstagramIcon color={color} />
+  </li>
+  <li
+    class="hover:bg-principal-darker hover:scale-110 transition-transform duration-200 cursor-pointer p-2 hover:rounded-full"
+  >
+    <FacebookIcon color={color} />
+  </li>
+</ul>

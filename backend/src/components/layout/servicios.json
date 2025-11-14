@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_layout_servicios",
+  "info": {
+    "displayName": "Servicios",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "servicio": {
+      "type": "component",
+      "component": "component.servicio",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

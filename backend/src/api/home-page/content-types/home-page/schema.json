@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_pages",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "section": {
+      "type": "dynamiczone",
+      "components": [
+        "layout.hero-banner",
+        "layout.servicios",
+        "layout.trabajos",
+        "layout.precios",
+        "layout.quien-soy"
+      ]
+    }
+  }
+}

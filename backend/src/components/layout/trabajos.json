@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_layout_trabajos",
+  "info": {
+    "displayName": "Trabajos",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "trabajo": {
+      "type": "component",
+      "component": "component.trabajo",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

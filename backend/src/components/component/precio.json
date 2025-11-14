@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_component_precios",
+  "info": {
+    "displayName": "precio",
+    "icon": "plane"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
