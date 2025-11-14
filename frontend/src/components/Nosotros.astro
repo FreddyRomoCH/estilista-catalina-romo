@@ -1,5 +1,5 @@
 ---
-const { homePageAboutMe, baseUrl } = Astro.props;
+const { homePageAboutMe } = Astro.props;
 
 const { description, image } = homePageAboutMe.section[0].yo;
 ---
@@ -19,7 +19,7 @@ const { description, image } = homePageAboutMe.section[0].yo;
     <picture class="order-1 md:order-2">
       <img
         class="aspect-square object-cover rounded-md"
-        src={`${baseUrl}${image[0].url}`}
+        src={`${image[0].url}`}
         alt="Foto Catalina Romo"
       />
     </picture>

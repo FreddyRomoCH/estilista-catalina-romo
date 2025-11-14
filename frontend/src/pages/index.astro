@@ -27,18 +27,15 @@ const homePageAboutMe = await getAboutMe();
 ---
 
 <Layout title="Catalina Romo - Estilista">
-  <BannerPrincipal homePageBanner={homePageBanner} baseUrl={STRAPI_BASE_URL} />
+  <BannerPrincipal homePageBanner={homePageBanner} />
 
-  <Servicios homePageServicios={homePageServicios} baseUrl={STRAPI_BASE_URL} />
+  <Servicios homePageServicios={homePageServicios} />
 
-  <TrabajosRealizados
-    homePageTrabajos={homePageTrabajos}
-    baseUrl={STRAPI_BASE_URL}
-  />
+  <TrabajosRealizados homePageTrabajos={homePageTrabajos} />
 
   <Precios homePagePrecios={homePagePrecios} />
 
-  <Nosotros homePageAboutMe={homePageAboutMe} baseUrl={STRAPI_BASE_URL} />
+  <Nosotros homePageAboutMe={homePageAboutMe} />
 
   <Contacto />
 </Layout>

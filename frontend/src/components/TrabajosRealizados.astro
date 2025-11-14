@@ -11,7 +11,7 @@ interface ImageType {
   url: string;
 }
 
-const { homePageTrabajos, baseUrl } = Astro.props;
+const { homePageTrabajos } = Astro.props;
 
 const workDone = homePageTrabajos.section[0].trabajo;
 ---
@@ -45,7 +45,7 @@ const workDone = homePageTrabajos.section[0].trabajo;
               <picture>
                 <img
                   class="object-cover w-full h-80"
-                  src={`${baseUrl}${image[0].url}`}
+                  src={`${image[0].url}`}
                   alt={`Cover of ${title}`}
                 />
               </picture>
