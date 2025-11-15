@@ -1,6 +1,6 @@
 ---
 import type { SocialTypes } from "../types/social";
-import SocialIcon from "@components/shared/socialIcon.astro";
+import SocialMediaIcon from "./shared/SocialMediaIcon.astro";
 
 const { contact } = Astro.props;
 
@@ -16,7 +16,7 @@ const headerSocial = contact.filter(
   {
     headerSocial &&
       headerSocial.map((c: SocialTypes) => (
-        <SocialIcon
+        <SocialMediaIcon
           name={c.Name}
           link={c.link}
           justIcon={true}

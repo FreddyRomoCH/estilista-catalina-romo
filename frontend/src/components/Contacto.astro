@@ -1,6 +1,6 @@
 ---
 import type { SocialTypes } from "../types/social";
-import SocialIcon from "@components/shared/socialIcon.astro";
+import SocialMediaIcon from "@components/shared/SocialMediaIcon.astro";
 
 const { homePageContacto } = Astro.props;
 
@@ -90,25 +90,25 @@ const googleMaps = contact.find((c: SocialTypes) => c.Name === "Google Maps");
       <ul class="flex flex-col gap-3 my-3">
         {
           whatsApp?.link && whatsApp.Name && (
-            <SocialIcon name={ whatsApp.Name } link={ whatsApp.link } className="w-6 h-6 p-1 bg-dorado rounded-xl" />
+            <SocialMediaIcon name={ whatsApp.Name } link={ whatsApp.link } className="w-6 h-6 p-1 bg-dorado rounded-xl" />
           )
         }
 
         {
           phone.link && phone.Name && (
-            <SocialIcon name={ phone.Name } link={ phone.link } className="w-6 h-6 p-1 bg-dorado rounded-xl" />
+            <SocialMediaIcon name={ phone.Name } link={ phone.link } className="w-6 h-6 p-1 bg-dorado rounded-xl" />
           )
         }
 
         {
           instagram.link && instagram.Name && (
-            <SocialIcon name={ instagram.Name } link={ instagram.link } className="w-6 h-6 p-1 bg-dorado rounded-xl" />
+            <SocialMediaIcon name={ instagram.Name } link={ instagram.link } className="w-6 h-6 p-1 bg-dorado rounded-xl" />
           )
         }
 
         {
           facebook.link && facebook.Name && (
-            <SocialIcon name={ facebook.Name } link={ facebook.link } className="w-6 h-6 p-1 bg-dorado rounded-xl" />
+            <SocialMediaIcon name={ facebook.Name } link={ facebook.link } className="w-6 h-6 p-1 bg-dorado rounded-xl" />
           )
         }
       </ul>
