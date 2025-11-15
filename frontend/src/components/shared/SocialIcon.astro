@@ -1,0 +1,28 @@
+---
+const { name, link, justIcon, className } = Astro.props;
+
+const svgLink = name === "Telefono" ? "phone" : name?.toLowerCase();
+---
+
+{
+  link && (
+    <li class="hover:bg-dorado rounded-xl p-1 transition duration-200 [&:hover>nav>a>span]:text-principal">
+      <nav area-label={name}>
+        <a
+          href={`${link}`}
+          target="_blank"
+          class="flex items-center justify-start gap-2 text-gris font-inter text-md font-light hover:text-dorado transition"
+          aria-label={name}
+        >
+          <svg class={className}>
+            <use href={`../../icons/sprite.svg#${svgLink}`} />
+          </svg>
+
+          {!justIcon && (
+            <span class="text-gris font-inter text-md font-light">{name}</span>
+          )}
+        </a>
+      </nav>
+    </li>
+  )
+}

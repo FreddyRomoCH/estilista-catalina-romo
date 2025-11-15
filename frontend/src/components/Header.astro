@@ -2,11 +2,14 @@
 import MenuHeader from "@components/MenuHeader.astro";
 import SocialMedia from "@components/SocialMedia.astro";
 
+const { contacto } = Astro.props;
+const contact = contacto.section[0].social;
 const menuIcon = "/icons/menu.png";
 ---
 
 <header class="px-8 py-4 bg-principal text-dorado sticky top-0 z-50 shadow-md">
   <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <!-- MENU MOBILE -->
     <div class="md:hidden relative">
       <img class="menu-icon w-8" src={menuIcon} alt="Menú" />
       <nav
@@ -15,10 +18,11 @@ const menuIcon = "/icons/menu.png";
         <MenuHeader />
 
         <div class="[&>ul>li]:border-0 [&>ul>li]:p-2">
-          <SocialMedia color="#BFA05A" />
+          <SocialMedia contact={contact} />
         </div>
       </nav>
     </div>
+    <!-- END MENU MOBILE -->
 
     <span
       class="font-cinzel font-black italic text-sm md:text-base h-20 sm:h-14 block"
@@ -43,7 +47,7 @@ const menuIcon = "/icons/menu.png";
     >
 
     <nav class="hidden md:block" aria-label="Redes Sociales">
-      <SocialMedia color="#EAD285" />
+      <SocialMedia contact={contact} />
     </nav>
   </div>
 </header>

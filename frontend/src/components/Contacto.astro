@@ -1,8 +1,6 @@
 ---
-interface SocialTypes {
-  Name: string;
-  link: string;
-}
+import type { SocialTypes } from "../types/social";
+import SocialIcon from "./shared/socialIcon.astro";
 
 const { homePageContacto } = Astro.props;
 
@@ -91,95 +89,26 @@ const googleMaps = contact.find((c: SocialTypes) => c.Name === "Google Maps");
 
       <ul class="flex flex-col gap-3 my-3">
         {
-          whatsApp.link && (
-            <li class="hover:bg-dorado rounded-xl p-1 transition duration-200 [&:hover>nav>a>span]:text-principal">
-              <nav area-label="whatsapp">
-                <a
-                  href={`https://wa.me/${whatsApp.link}`}
-                  target="_blank"
-                  class="flex flex-row items-center gap-2 text-gris font-inter text-md font-light hover:text-dorado transition"
-                  aria-label="WhatsApp"
-                >
-                  <svg class="w-6 h-6 p-1 bg-dorado rounded-xl">
-                    <use href={`../icons/sprite.svg#${facebook.Name.toLowerCase()}`} />
-                  </svg>
-
-                  <span class="text-gris font-inter text-md font-light">
-                    {whatsApp.Name}
-                  </span>
-                </a>
-              </nav>
-            </li>
+          whatsApp?.link && whatsApp.Name && (
+            <SocialIcon name={ whatsApp.Name } link={ whatsApp.link } className="w-6 h-6 p-1 bg-dorado rounded-xl" />
           )
         }
 
         {
-          phone.link && (
-            <li class="hover:bg-dorado rounded-xl p-1 transition duration-200 [&:hover>nav>a>span]:text-principal">
-              <nav>
-                <a
-                  href={`tel:${phone.link}`}
-                  class="flex flex-row items-center gap-2 text-gris font-inter text-md font-light hover:text-dorado transition"
-                  aria-label="Phone"
-                >
-                  <svg class="w-6 h-6 p-1 bg-dorado rounded-xl">
-                    <use href={`../icons/sprite.svg#${facebook.Name.toLowerCase()}`} />
-                  </svg>
-
-                  <span class="text-gris font-inter text-md font-light">
-                    {phone.link}
-                  </span>
-                </a>
-              </nav>
-            </li>
+          phone.link && phone.Name && (
+            <SocialIcon name={ phone.Name } link={ phone.link } className="w-6 h-6 p-1 bg-dorado rounded-xl" />
           )
         }
 
         {
-          instagram.link && (
-            <li class="hover:bg-dorado rounded-xl p-1 transition duration-200 [&:hover>nav>a>span]:text-principal">
-              <nav>
-                <a
-                  href={`https://www.instagram.com/${instagram.link}`}
-                  target="_blank"
-                  class="flex flex-row items-center gap-2 text-gris font-inter text-md font-light hover:text-dorado transition"
-                  aria-label="Instagram"
-                >
-                  <svg class="w-6 h-6 p-1 bg-dorado rounded-xl">
-                    <use href={`../icons/sprite.svg#${facebook.Name.toLowerCase()}`} />
-                  </svg>
-
-                  <span class="text-gris font-inter text-md font-light">
-                    {instagram.link}
-                  </span>
-                </a>
-              </nav>
-            </li>
+          instagram.link && instagram.Name && (
+            <SocialIcon name={ instagram.Name } link={ instagram.link } className="w-6 h-6 p-1 bg-dorado rounded-xl" />
           )
         }
 
         {
-          facebook.link && (
-            <li class="hover:bg-dorado rounded-xl p-1 transition duration-200 [&:hover>nav>a>span]:text-principal">
-              <nav>
-                <a
-                  href={`https://www.facebook.com/${facebook.link}`}
-                  target="_blank"
-                  class="flex flex-row items-center gap-2 text-gris font-inter text-md font-light hover:text-dorado transition"
-                  aria-label={facebook.Name}
-                >
-                  <svg class="w-6 h-6 p-1 bg-dorado rounded-xl">
-                    <use
-                      href={`../icons/sprite.svg#${facebook.Name.toLowerCase()}`}
-                    />
-                  </svg>
-
-                  <span class="text-gris font-inter text-md font-light">
-                    {facebook.link}
-                  </span>
-                </a>
-              </nav>
-            </li>
+          facebook.link && facebook.Name && (
+            <SocialIcon name={ facebook.Name } link={ facebook.link } className="w-6 h-6 p-1 bg-dorado rounded-xl" />
           )
         }
       </ul>
