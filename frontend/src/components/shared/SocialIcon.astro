@@ -1,7 +1,7 @@
 ---
 const { name, link, justIcon, className } = Astro.props;
 
-const svgLink = name === "Telefono" ? "phone" : name?.toLowerCase();
+const svg = name === "Telefono" ? "phone" : name?.toLowerCase();
 ---
 
 {
@@ -15,7 +15,7 @@ const svgLink = name === "Telefono" ? "phone" : name?.toLowerCase();
           aria-label={name}
         >
           <svg class={className}>
-            <use href={`../../icons/sprite.svg#${svgLink}`} />
+            <use href={`../../icons/sprite.svg#${svg}`} />
           </svg>
 
           {!justIcon && (
