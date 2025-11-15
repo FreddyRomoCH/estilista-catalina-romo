@@ -39,6 +39,18 @@ export interface ComponentServicio extends Struct.ComponentSchema {
   };
 }
 
+export interface ComponentSocial extends Struct.ComponentSchema {
+  collectionName: 'components_component_socials';
+  info: {
+    displayName: 'social';
+    icon: 'envelop';
+  };
+  attributes: {
+    link: Schema.Attribute.String;
+    Name: Schema.Attribute.String;
+  };
+}
+
 export interface ComponentTrabajo extends Struct.ComponentSchema {
   collectionName: 'components_component_trabajos';
   info: {
@@ -66,6 +78,17 @@ export interface ComponentYo extends Struct.ComponentSchema {
   attributes: {
     description: Schema.Attribute.Text;
     image: Schema.Attribute.Media<'files' | 'images', true>;
+  };
+}
+
+export interface LayoutContacto extends Struct.ComponentSchema {
+  collectionName: 'components_layout_contactos';
+  info: {
+    displayName: 'Contacto';
+    icon: 'envelop';
+  };
+  attributes: {
+    social: Schema.Attribute.Component<'component.social', true>;
   };
 }
 
@@ -133,8 +156,10 @@ declare module '@strapi/strapi' {
       'component.link': ComponentLink;
       'component.precio': ComponentPrecio;
       'component.servicio': ComponentServicio;
+      'component.social': ComponentSocial;
       'component.trabajo': ComponentTrabajo;
       'component.yo': ComponentYo;
+      'layout.contacto': LayoutContacto;
       'layout.hero-banner': LayoutHeroBanner;
       'layout.precios': LayoutPrecios;
       'layout.quien-soy': LayoutQuienSoy;

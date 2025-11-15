@@ -18,7 +18,8 @@
         "layout.servicios",
         "layout.trabajos",
         "layout.precios",
-        "layout.quien-soy"
+        "layout.quien-soy",
+        "layout.contacto"
       ]
     }
   }

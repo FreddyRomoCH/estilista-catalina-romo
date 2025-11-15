@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_component_socials",
+  "info": {
+    "displayName": "social",
+    "icon": "envelop"
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -458,6 +458,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
         'layout.trabajos',
         'layout.precios',
         'layout.quien-soy',
+        'layout.contacto',
       ]
     >;
     updatedAt: Schema.Attribute.DateTime;

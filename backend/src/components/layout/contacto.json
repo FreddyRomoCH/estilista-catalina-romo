@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_layout_contactos",
+  "info": {
+    "displayName": "Contacto",
+    "icon": "envelop"
+  },
+  "options": {},
+  "attributes": {
+    "social": {
+      "type": "component",
+      "component": "component.social",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

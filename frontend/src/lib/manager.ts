@@ -1,4 +1,4 @@
-export const STRAPI_BASE_URL = process.env.STRAPI_BASE_URL
+export const STRAPI_BASE_URL = process.env.STRAPI_BASE_URL ?? 'http://localhost:1337'
 
 export async function getHeroBanner() {
     const queryHomePage = 'populate[section][on][layout.hero-banner][populate][banner][fields][0]=url&populate[section][on][layout.hero-banner][populate][buttons][populate]'
@@ -36,6 +36,14 @@ export async function getAboutMe() {
     const queryAboutMe = 'populate[section][on][layout.quien-soy][populate][yo][populate][image][fields]=url'
 
     const response = await getStrapiData(`/api/home-page?${queryAboutMe}`)
+
+    return response?.data
+}
+
+export async function getContacto() {
+    const queryContacto = 'populate[section][on][layout.contacto][populate][social][populate]'
+
+    const response = await getStrapiData(`/api/home-page?${queryContacto}`)
 
     return response?.data
 }

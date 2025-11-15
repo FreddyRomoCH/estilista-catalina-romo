@@ -1,5 +1,19 @@
 ---
+interface SocialTypes {
+  Name: string;
+  link: string;
+}
 
+const { homePageContacto } = Astro.props;
+
+const contact = homePageContacto.section[0].social;
+
+const whatsApp = contact.find((c: SocialTypes) => c.Name === "WhatsApp");
+const phone = contact.find((c: SocialTypes) => c.Name === "Telefono");
+const instagram = contact.find((c: SocialTypes) => c.Name === "Instagram");
+const facebook = contact.find((c: SocialTypes) => c.Name === "Facebook");
+const address = contact.find((c: SocialTypes) => c.Name === "Direccion");
+const googleMaps = contact.find((c: SocialTypes) => c.Name === "Google Maps");
 ---
 
 <section id="contacto" class="max-w-7xl m-auto mb-12">
@@ -76,101 +90,117 @@
       </p>
 
       <ul class="flex flex-col gap-3 my-3">
-        <li
-          class="hover:bg-dorado rounded-xl p-1 transition duration-200 [&:hover>nav>a>span]:text-principal"
-        >
-          <nav area-label="whatsapp">
-            <a
-              href="https://wa.me/573013634888"
-              target="_blank"
-              class="flex flex-row items-center gap-2 text-gris font-inter text-md font-light hover:text-dorado transition"
-              aria-label="WhatsApp"
-            >
-              <svg class="w-6 h-6 p-1 bg-dorado rounded-xl">
-                <use href="../icons/sprite.svg#whatsapp"></use>
-              </svg>
+        {
+          whatsApp.link && (
+            <li class="hover:bg-dorado rounded-xl p-1 transition duration-200 [&:hover>nav>a>span]:text-principal">
+              <nav area-label="whatsapp">
+                <a
+                  href={`https://wa.me/${whatsApp.link}`}
+                  target="_blank"
+                  class="flex flex-row items-center gap-2 text-gris font-inter text-md font-light hover:text-dorado transition"
+                  aria-label="WhatsApp"
+                >
+                  <svg class="w-6 h-6 p-1 bg-dorado rounded-xl">
+                    <use href={`../icons/sprite.svg#${facebook.Name.toLowerCase()}`} />
+                  </svg>
 
-              <span class="text-gris font-inter text-md font-light"
-                >WhatsApp</span
-              >
-            </a>
-          </nav>
-        </li>
+                  <span class="text-gris font-inter text-md font-light">
+                    {whatsApp.Name}
+                  </span>
+                </a>
+              </nav>
+            </li>
+          )
+        }
 
-        <li
-          class="hover:bg-dorado rounded-xl p-1 transition duration-200 [&:hover>nav>a>span]:text-principal"
-        >
-          <nav>
-            <a
-              href="tel:+573013634888"
-              class="flex flex-row items-center gap-2 text-gris font-inter text-md font-light hover:text-dorado transition"
-              aria-label="Phone"
-            >
-              <svg class="w-6 h-6 p-1 bg-dorado rounded-xl">
-                <use href="../icons/sprite.svg#phone"></use>
-              </svg>
+        {
+          phone.link && (
+            <li class="hover:bg-dorado rounded-xl p-1 transition duration-200 [&:hover>nav>a>span]:text-principal">
+              <nav>
+                <a
+                  href={`tel:${phone.link}`}
+                  class="flex flex-row items-center gap-2 text-gris font-inter text-md font-light hover:text-dorado transition"
+                  aria-label="Phone"
+                >
+                  <svg class="w-6 h-6 p-1 bg-dorado rounded-xl">
+                    <use href={`../icons/sprite.svg#${facebook.Name.toLowerCase()}`} />
+                  </svg>
 
-              <span class="text-gris font-inter text-md font-light"
-                >+00 000 00000</span
-              >
-            </a>
-          </nav>
-        </li>
+                  <span class="text-gris font-inter text-md font-light">
+                    {phone.link}
+                  </span>
+                </a>
+              </nav>
+            </li>
+          )
+        }
 
-        <li
-          class="hover:bg-dorado rounded-xl p-1 transition duration-200 [&:hover>nav>a>span]:text-principal"
-        >
-          <nav>
-            <a
-              href="/"
-              class="flex flex-row items-center gap-2 text-gris font-inter text-md font-light hover:text-dorado transition"
-              aria-label="Instagram"
-            >
-              <svg class="w-6 h-6 p-1 bg-dorado rounded-xl">
-                <use href="../icons/sprite.svg#instagram"></use>
-              </svg>
+        {
+          instagram.link && (
+            <li class="hover:bg-dorado rounded-xl p-1 transition duration-200 [&:hover>nav>a>span]:text-principal">
+              <nav>
+                <a
+                  href={`https://www.instagram.com/${instagram.link}`}
+                  target="_blank"
+                  class="flex flex-row items-center gap-2 text-gris font-inter text-md font-light hover:text-dorado transition"
+                  aria-label="Instagram"
+                >
+                  <svg class="w-6 h-6 p-1 bg-dorado rounded-xl">
+                    <use href={`../icons/sprite.svg#${facebook.Name.toLowerCase()}`} />
+                  </svg>
 
-              <span class="text-gris font-inter text-md font-light"
-                >@catalina_romo_peluqueria</span
-              >
-            </a>
-          </nav>
-        </li>
+                  <span class="text-gris font-inter text-md font-light">
+                    {instagram.link}
+                  </span>
+                </a>
+              </nav>
+            </li>
+          )
+        }
 
-        <li
-          class="hover:bg-dorado rounded-xl p-1 transition duration-200 [&:hover>nav>a>span]:text-principal"
-        >
-          <nav>
-            <a
-              href="/"
-              class="flex flex-row items-center gap-2 text-gris font-inter text-md font-light hover:text-dorado transition"
-              aria-label="Facebook"
-            >
-              <svg class="w-6 h-6 p-1 bg-dorado rounded-xl">
-                <use href="../icons/sprite.svg#facebook"></use>
-              </svg>
+        {
+          facebook.link && (
+            <li class="hover:bg-dorado rounded-xl p-1 transition duration-200 [&:hover>nav>a>span]:text-principal">
+              <nav>
+                <a
+                  href={`https://www.facebook.com/${facebook.link}`}
+                  target="_blank"
+                  class="flex flex-row items-center gap-2 text-gris font-inter text-md font-light hover:text-dorado transition"
+                  aria-label={facebook.Name}
+                >
+                  <svg class="w-6 h-6 p-1 bg-dorado rounded-xl">
+                    <use
+                      href={`../icons/sprite.svg#${facebook.Name.toLowerCase()}`}
+                    />
+                  </svg>
 
-              <span class="text-gris font-inter text-md font-light"
-                >Peluqueria Catalina Romo</span
-              >
-            </a>
-          </nav>
-        </li>
+                  <span class="text-gris font-inter text-md font-light">
+                    {facebook.link}
+                  </span>
+                </a>
+              </nav>
+            </li>
+          )
+        }
       </ul>
 
-      <h3 class="text-dorado font-playfair text-xl">Dirección</h3>
-      <p class="text-gris font-inter text-md font-light">
-        Pasaje Tacna #538, Pudahuel, Santiago, Chile
-      </p>
+      { address.link && (
+        <h3 class="text-dorado font-playfair text-xl">{address.Name && "Dirección"}</h3>
+        <p class="text-gris font-inter text-md font-light">
+          { address.link }
+        </p>
+      ) }
 
-      <a
-        href="https://maps.google.com/?q=Tacna+538,+9060075+Pudahuel,+Región+Metropolitana,+Chile"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-block px-5 py-3 border border-dorado text-dorado rounded hover:bg-dorado hover:text-principal transition text-center"
-      >
-        📍 Ver en Google Maps</a
-      >
+      { googleMaps.link && (
+        <a
+          href={`${googleMaps.link}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block px-5 py-3 border border-dorado text-dorado rounded hover:bg-dorado hover:text-principal transition text-center"
+        >
+          📍 Ver en {googleMaps.Name}
+        </a>
+      ) }
     </div>
   </div>
 </section>
