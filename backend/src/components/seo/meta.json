@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_seo_metas",
+  "info": {
+    "displayName": "meta",
+    "icon": "rocket"
+  },
+  "options": {},
+  "attributes": {
+    "seo_title": {
+      "type": "string"
+    },
+    "seo_description": {
+      "type": "text"
+    },
+    "seo_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "canonical_url": {
+      "type": "string"
+    },
+    "no_index": {
+      "type": "boolean"
+    },
+    "local_business_schema": {
+      "type": "json"
+    }
+  },
+  "config": {}
+}

@@ -48,6 +48,14 @@ export async function getContacto() {
     return response?.data
 }
 
+export async function getSeo() {
+    const querySeo = 'populate[section][on][seo.meta][populate][seo_image][fields]=url'
+
+    const response = await getStrapiData(`/api/home-page?${querySeo}`)
+
+    return response?.data
+}
+
 export async function getStrapiData(url: string) {
     try {
         const response = await fetch(`${STRAPI_BASE_URL}${url}`, {

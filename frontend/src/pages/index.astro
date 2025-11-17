@@ -13,7 +13,9 @@ import {
   getPrecios,
   getServicios,
   getTrabajos,
+  getSeo,
 } from "@lib/manager";
+import Seo from "@components/Seo.astro";
 
 const homePageBanner = await getHeroBanner();
 const homePageServicios = await getServicios();
@@ -21,9 +23,12 @@ const homePageTrabajos = await getTrabajos();
 const homePagePrecios = await getPrecios();
 const homePageAboutMe = await getAboutMe();
 const homePageContacto = await getContacto();
+const seo = await getSeo();
 ---
 
 <Layout title="Catalina Romo - Estilista">
+  <Seo slot="seo" seo={seo} />
+
   <BannerPrincipal homePageBanner={homePageBanner} />
 
   <Servicios homePageServicios={homePageServicios} />

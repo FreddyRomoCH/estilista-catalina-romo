@@ -150,6 +150,22 @@ export interface LayoutTrabajos extends Struct.ComponentSchema {
   };
 }
 
+export interface SeoMeta extends Struct.ComponentSchema {
+  collectionName: 'components_seo_metas';
+  info: {
+    displayName: 'meta';
+    icon: 'rocket';
+  };
+  attributes: {
+    canonical_url: Schema.Attribute.String;
+    local_business_schema: Schema.Attribute.JSON;
+    no_index: Schema.Attribute.Boolean;
+    seo_description: Schema.Attribute.Text;
+    seo_image: Schema.Attribute.Media<'images'>;
+    seo_title: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -165,6 +181,7 @@ declare module '@strapi/strapi' {
       'layout.quien-soy': LayoutQuienSoy;
       'layout.servicios': LayoutServicios;
       'layout.trabajos': LayoutTrabajos;
+      'seo.meta': SeoMeta;
     }
   }
 }

@@ -19,7 +19,8 @@
         "layout.trabajos",
         "layout.precios",
         "layout.quien-soy",
-        "layout.contacto"
+        "layout.contacto",
+        "seo.meta"
       ]
     }
   }
