@@ -1,0 +1,192 @@
+---
+const webFormKey = import.meta.env.PUBLIC_WEBFORMS_KEY;
+---
+
+<div class="w-full py-5 px-5 border-dorado rounded-md border box-border">
+  <form action="" method="post" novalidate>
+    <input type="hidden" value={webFormKey} id="access_key" name="access_key" />
+    <div>
+      <label for="name" class="text-dorado font-inter font-light text-xl"
+        >Tu nombre</label
+      >
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        minlength="2"
+        class="input-form"
+      />
+
+      <p class="error-msg hidden">Por favor ingresa tu nombre</p>
+    </div>
+    <div>
+      <label for="name" class="text-dorado font-inter font-light text-xl"
+        >Tu correo</label
+      >
+      <input type="email" id="email" name="email" required class="input-form" />
+
+      <p class="error-msg hidden">Por favor ingresa tu Email</p>
+    </div>
+    <div>
+      <label
+        for="message"
+        class="text-dorado font-inter font-light text-xl w-full"
+        >Tu mensaje</label
+      >
+      <textarea
+        id="message"
+        name="message"
+        required
+        class="input-form h-38 resize-none"></textarea>
+
+      <p class="error-msg hidden">El mensaje no puede estar vacio</p>
+    </div>
+    <button
+      type="submit"
+      class="mt-3 bg-dorado rounded-sm px-5 py-3 text-principal hover:bg-dorado hover:saturate-150 transition cursor-pointer font-inter font-medium text-sm w-full"
+    >
+      Enviar Mensaje
+    </button>
+  </form>
+
+  <div
+    id="success-message"
+    class="mt-2.5 p-3 bg-green-500/20 text-success border border-success rounded text-sm shadow-lg transition-opacity duration-500 opacity-0 hidden"
+  >
+    ✅ Mensaje enviado correctamente
+  </div>
+</div>
+
+<script>
+  const formProvider = "https://api.web3forms.com/submit";
+  const form = document.querySelector("form");
+  const submitBtn = form?.querySelector(
+    "button[type='submit']"
+  ) as HTMLButtonElement;
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    if (submitBtn) {
+      submitBtn.textContent = "Enviando...";
+      submitBtn.disabled = true;
+    }
+
+    let isValid = true;
+
+    form
+      .querySelectorAll("input:not([type='hidden']), textarea")
+      .forEach((field) => {
+        const input = field as HTMLInputElement | HTMLTextAreaElement;
+        const errorMsg = input.nextElementSibling;
+
+        if (!input.checkValidity()) {
+          errorMsg?.classList.remove("hidden");
+          isValid = false;
+          submitBtn.textContent = "Enviar Mensaje";
+          submitBtn.disabled = false;
+        } else {
+          errorMsg?.classList.add("hidden");
+          submitBtn.textContent = "Enviar Mensaje";
+          submitBtn.disabled = false;
+        }
+      });
+
+    if (isValid) {
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(formProvider, {
+          method: "POST",
+          body: formData,
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          console.log(response);
+          showToast();
+          form.reset();
+        } else {
+          alert("Error: " + data.message);
+          if (submitBtn) {
+            submitBtn.textContent = "Enviar Mensaje";
+            submitBtn.disabled = false;
+          }
+        }
+      } catch (error) {
+        console.log("Error sending the message: ", error);
+      } finally {
+        if (submitBtn) {
+          submitBtn.textContent = "Enviar Mensaje";
+          submitBtn.disabled = false;
+        }
+      }
+    }
+  });
+
+  const inputName = document.getElementById("name") as HTMLInputElement;
+  const inputEmail = document.getElementById("email") as HTMLInputElement;
+  const inputMessage = document.getElementById("message") as HTMLInputElement;
+
+  // Real-time validation for Name field
+  inputName?.addEventListener("input", () => {
+    const errorMsg = inputName.nextElementSibling as HTMLElement;
+    const value = inputName.value.trim();
+
+    if (value.length > 0) {
+      if (value.length === 1) {
+        errorMsg.textContent = "Ingresar nombre válido";
+      } else {
+        inputName.nextElementSibling?.classList.add("hidden");
+      }
+    } else {
+      errorMsg.classList.remove("hidden");
+      errorMsg.textContent = "Por favor ingresa tu nombre";
+    }
+  });
+
+  //Real-time validation for Email field
+  inputEmail?.addEventListener("input", () => {
+    const errorMsg = inputEmail.nextElementSibling as HTMLElement;
+    const value = inputEmail.value.trim();
+
+    if (value.length === 0) {
+      errorMsg.textContent = "Por favor ingresa tu Email";
+      errorMsg.classList.remove("hidden");
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      errorMsg.textContent = "Correo inválido";
+      errorMsg.classList.remove("hidden");
+    } else {
+      errorMsg.classList.add("hidden");
+    }
+  });
+
+  //Real-time validation for Message field
+  inputMessage?.addEventListener("input", () => {
+    const errorMsg = inputMessage.nextElementSibling as HTMLElement;
+    const value = inputMessage.value.trim();
+
+    if (value.length === 0) {
+      errorMsg.textContent = "Por favor ingresa tu mensaje";
+      errorMsg.classList.remove("hidden");
+    } else if (value.length < 10) {
+      errorMsg.textContent = "El mensaje debe tener al menos 10 caracteres";
+      errorMsg.classList.remove("hidden");
+    } else {
+      errorMsg.classList.add("hidden");
+    }
+  });
+
+  function showToast() {
+    const toast = document.getElementById("success-message") as HTMLElement;
+    toast.classList.remove("hidden");
+    requestAnimationFrame(() => toast.classList.remove("opacity-0"));
+
+    setTimeout(() => {
+      toast.classList.add("opacity-0");
+      setTimeout(() => toast.classList.add("hidden"), 500);
+    }, 4000);
+  }
+</script>

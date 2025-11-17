@@ -1,0 +1,86 @@
+---
+import type { SocialTypes } from "../types/social";
+import SocialMediaIcon from "./shared/SocialMediaIcon.astro";
+
+const { contact } = Astro.props;
+
+const whatsApp = contact.find((c: SocialTypes) => c.Name === "WhatsApp");
+const phone = contact.find((c: SocialTypes) => c.Name === "Telefono");
+const instagram = contact.find((c: SocialTypes) => c.Name === "Instagram");
+const facebook = contact.find((c: SocialTypes) => c.Name === "Facebook");
+const address = contact.find((c: SocialTypes) => c.Name === "Direccion");
+const googleMaps = contact.find((c: SocialTypes) => c.Name === "Google Maps");
+---
+
+<div class="flex flex-col gap-2 w-full">
+  <h3 class="text-dorado font-playfair text-xl">Información</h3>
+  <p class="text-gris font-inter text-md font-light">
+    Reserva tu cita o contáctanos por los siguientes medios:
+  </p>
+
+  <ul class="flex flex-col gap-3 my-3">
+    {
+      whatsApp?.link && whatsApp?.Name && (
+        <SocialMediaIcon
+          name={whatsApp.Name}
+          link={whatsApp.link}
+          className="w-6 h-6 p-1 bg-dorado rounded-xl"
+        />
+      )
+    }
+
+    {
+      phone?.link && phone?.Name && (
+        <SocialMediaIcon
+          name={phone.Name}
+          link={phone.link}
+          className="w-6 h-6 p-1 bg-dorado rounded-xl"
+        />
+      )
+    }
+
+    {
+      instagram?.link && instagram?.Name && (
+        <SocialMediaIcon
+          name={instagram.Name}
+          link={instagram.link}
+          className="w-6 h-6 p-1 bg-dorado rounded-xl"
+        />
+      )
+    }
+
+    {
+      facebook?.link && facebook?.Name && (
+        <SocialMediaIcon
+          name={facebook.Name}
+          link={facebook.link}
+          className="w-6 h-6 p-1 bg-dorado rounded-xl"
+        />
+      )
+    }
+  </ul>
+
+  {
+    address?.link && (
+      <>
+        <h3 class="text-dorado font-playfair text-xl">
+          {address.Name && "Dirección"}
+        </h3>
+        <p class="text-gris font-inter text-md font-light">{address.link}</p>
+      </>
+    )
+  }
+
+  {
+    googleMaps?.link && (
+      <a
+        href={`${googleMaps.link}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block px-5 py-3 border border-dorado text-dorado rounded hover:bg-dorado hover:text-principal transition text-center"
+      >
+        📍 Ver en {googleMaps.Name}
+      </a>
+    )
+  }
+</div>
